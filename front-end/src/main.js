@@ -2,6 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import axios from 'axios'
+
+
+//Set the default url for axios
+axios.defaults.baseURL = 'http://localhost:5000'
 
 Vue.config.productionTip = false
 
