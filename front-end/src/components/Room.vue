@@ -13,7 +13,9 @@
           </div>
       </div>
       <div class="container-linkSingleRoom">
-          <button class="btn-room">Booking</button>
+            <router-link :to="`/rooms/${room._id}`">
+                 <button class="btn-room">Booking</button>
+            </router-link>
       </div>
   </div>
 </template>
@@ -43,11 +45,12 @@ export default {
 }
 
 .container-cardRoom{
-    width: 200px;
-    margin-top:25px;
+    width: 300px;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 .container-equipements{

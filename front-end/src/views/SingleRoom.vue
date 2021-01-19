@@ -1,0 +1,58 @@
+<template>
+  <div>
+      <div v-for="detail in getRoom" :key="detail._id">
+          <h5>{{detail.name}}</h5>
+          <p>{{detail.description}}</p>
+          <p>{{detail.capacity}}</p>
+          <div class="container-equipements">
+              <div class="room-equipements" v-if="detail.equipements.length == 0">
+              <p class="equipements-none">No equipement</p>
+          </div>
+          <div class="room-equipements" v-else v-for="gear in detail.equipements" :key="gear._id">
+              <img v-if="gear.name == tv" :src="iconTv" alt="tv"/> 
+              <img  v-else-if="gear.name == retro" :src="iconProjector" alt="tv"/> 
+          </div>
+      </div>
+      </div>
+  </div>
+</template>
+
+<script>
+import {mapGetters,mapActions} from "vuex"
+import iconTv from "../assets/iconTv.png"
+import iconProjector from "../assets/iconProjector.png"
+export default {
+    name:"SingleRoom",
+    
+    data(){
+        return{
+            tv:"TV",
+            retro:"Retro Projecteur",
+            iconTv:iconTv,
+            iconProjector:iconProjector
+        }
+    },
+
+    computed:{
+        ...mapGetters(["getAllRooms"]),
+        
+        getRoom(){
+            return this.getAllRooms.rooms.filter(room =>{
+              return  room._id == this.$route.params.id
+            })
+        }
+    },
+
+    methods:{
+        ...mapActions(["allRooms"]),
+    },
+
+    created(){
+        this.allRooms()
+    }
+}
+</script>
+
+<style>
+
+</style>

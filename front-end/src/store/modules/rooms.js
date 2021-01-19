@@ -13,7 +13,7 @@ const actions={
     async allRooms({commit}){
         const response = await axios.get("/rooms")
         commit("SET_ROOMS",response.data)
-    }
+    },
 }
 
 const mutations={

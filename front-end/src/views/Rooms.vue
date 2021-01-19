@@ -14,15 +14,10 @@ import {mapGetters,mapActions} from "vuex"
 import Room from "../components/Room"
 export default {
     name:"Rooms",
+    
 
     components:{
         Room
-    },
-
-    data(){
-        return{
-
-        }
     },
 
     computed:{
