@@ -13,7 +13,7 @@
               <img  v-else-if="gear.name == retro" :src="iconProjector" alt="tv"/> 
           </div>
         </div>
-        <Booking/>
+        <Booking v-bind:id="detail._id"/>
       </div>
   </div>
 

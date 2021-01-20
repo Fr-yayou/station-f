@@ -18,7 +18,7 @@ const BookedSchema = new Schema ({
         unique:false
     },
     day:{
-        type:String
+        type:Date
     },
     startTime:{
         type:Number

@@ -18,9 +18,6 @@ router.post("/post",async (req,res) =>{
             startTime,
             endTime
         })
-
-        console.log(newBooking)
-
         const savedBooking = await newBooking.save()
         if (!savedBooking) throw Error("Something went wrong while saving the booking")
 
