@@ -1,12 +1,15 @@
 <template>
-  <div class="home">
-    <h1>Hello from home</h1>
+  <div>
+      
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
+    name:"Booking"
 }
 </script>
+
+<style>
+
+</style>

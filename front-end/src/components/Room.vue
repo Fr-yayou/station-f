@@ -51,6 +51,16 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-bottom: 25px;
+    background-color: white;
+    height: 200px;
+    border: 1px solid white;
+    border-radius: 30px;
+    box-shadow: 0 0 35px #D3D3D3
+    
+}
+
+.container-cardRoom:hover{
+    border:1px solid #ff00ae;
 }
 
 .container-equipements{
@@ -65,6 +75,18 @@ export default {
 
 .equipements-none{
     margin-bottom: 11px;
+}
+
+.btn-room{
+    padding: 0.75rem 2.125rem 0.75rem 2.125rem;
+    background: #fff;
+    color: #ff00ae;
+    border: 1px solid #ff00ae;
+}
+
+.btn-room:hover{
+    background-color: #ff00ae;
+    color:white;
 }
 
 

@@ -1,6 +1,6 @@
 <template>
   <div class="rooms-view">
-      <h1>Rooms</h1>
+      <Banner/>
       <div class="container-room">
           <div v-for="room in getAllRooms.rooms" :key="room._id">
             <Room v-bind:room="room"/>
@@ -12,12 +12,14 @@
 <script>
 import {mapGetters,mapActions} from "vuex"
 import Room from "../components/Room"
+import Banner from "../components/Banner"
 export default {
     name:"Rooms",
     
 
     components:{
-        Room
+        Room,
+        Banner
     },
 
     computed:{
@@ -39,10 +41,9 @@ export default {
 .container-room{
     display:flex;
     flex-wrap: wrap;
-}
-
-.rooms-view{
+    justify-content: space-around;
     margin-right:25px;
     margin-left:25px
 }
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-singleViewRoom">
       <div v-for="detail in getRoom" :key="detail._id">
           <h5>{{detail.name}}</h5>
           <p>{{detail.description}}</p>
@@ -12,8 +12,9 @@
               <img v-if="gear.name == tv" :src="iconTv" alt="tv"/> 
               <img  v-else-if="gear.name == retro" :src="iconProjector" alt="tv"/> 
           </div>
+        </div>
       </div>
-      </div>
+    <Booking/>
   </div>
 </template>
 
@@ -21,6 +22,7 @@
 import {mapGetters,mapActions} from "vuex"
 import iconTv from "../assets/iconTv.png"
 import iconProjector from "../assets/iconProjector.png"
+import Booking from "../components/Booking"
 export default {
     name:"SingleRoom",
     
@@ -31,6 +33,10 @@ export default {
             iconTv:iconTv,
             iconProjector:iconProjector
         }
+    },
+
+    components:{
+        Booking
     },
 
     computed:{
@@ -53,6 +59,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container-singleViewRoom{
+    margin-right:25px;
+    margin-left:25px
+}
 </style>

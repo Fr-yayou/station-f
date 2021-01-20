@@ -1,15 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/rooms">Rooms</router-link> |
-    </div>
-    <router-view/>
+      <NavBar/>
+      <router-view/>
   </div>
+  
 </template>
+
+<script>
+import NavBar from "./components/NavBar"
+export default {
+  components:{
+    NavBar
+  }
+}
+</script>
+
 <style>
-*{
+  *{
   padding:0px;
   margin:0px
-}
+  }
+  body{
+   background-color: #F5F5F5;
+  }
+
 </style>
