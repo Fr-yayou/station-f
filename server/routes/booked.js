@@ -7,6 +7,7 @@ const Booked = require("../models/Booked")
 //Post a new room//
 
 router.post("/post",async (req,res) =>{
+    console.log(req.body)
     const {room_id, email,name,day,startTime,endTime} = new Booked(req.body)
 
     try{

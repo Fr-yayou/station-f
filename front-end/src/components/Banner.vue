@@ -28,6 +28,6 @@ export default {
     font-weight: 800;
 }
 .container-banner{
-     background-color: rgba(0, 0, 0, .5);
+     background-color:black
 }
 </style>
