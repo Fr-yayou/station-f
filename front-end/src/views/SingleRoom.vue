@@ -13,9 +13,10 @@
               <img  v-else-if="gear.name == retro" :src="iconProjector" alt="tv"/> 
           </div>
         </div>
+        <Booking/>
       </div>
-    <Booking/>
   </div>
+
 </template>
 
 <script>
@@ -62,6 +63,9 @@ export default {
 <style scoped>
 .container-singleViewRoom{
     margin-right:25px;
-    margin-left:25px
+    margin-left:25px;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
 }
 </style>

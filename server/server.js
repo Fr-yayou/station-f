@@ -20,9 +20,11 @@ mongoose.connect(process.env.MONGO_URI,
 
 // import routes//
 const roomRoutes = require("./routes/room")
+const bookingRoutes = require("./routes/booked")
 
 // room route//
 app.use("/rooms",roomRoutes)
+app.use("/booking",bookingRoutes)
 
 
 app.listen(PORT, () => console.log(`Server started on ${PORT}`))

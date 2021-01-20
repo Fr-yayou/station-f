@@ -17,7 +17,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, .5);
+    opacity: 0.6;
 }
 .container-banner h1{
     color:white;
@@ -26,5 +26,8 @@ export default {
     left: 30%;
     font-size: 48px;
     font-weight: 800;
+}
+.container-banner{
+     background-color: rgba(0, 0, 0, .5);
 }
 </style>
