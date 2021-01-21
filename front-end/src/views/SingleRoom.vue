@@ -6,8 +6,11 @@
                     <img class="image-office" :src="office" alt="office" />
                 </div>
                 <h5>{{detail.name}}</h5>
-                <p>{{detail.description}}</p>   
-                <p>{{detail.capacity}}</p>
+                <p>{{detail.description}}</p>
+                <div class="iconPeople">
+                    <img :src="people" alt="people"/>
+                    <p>{{detail.capacity}}</p>
+                </div>   
             <div class="container-equipements">
                 <div class="room-equipements" v-if="detail.equipements.length == 0">
                 <p class="equipements-none">No equipement</p>
@@ -25,6 +28,7 @@
 </template>
 
 <script>
+import people from "../assets/people.png"
 import office from "../assets/office.jpg"
 import {mapGetters,mapActions} from "vuex"
 import iconTv from "../assets/iconTv.png"
@@ -39,7 +43,8 @@ export default {
             retro:"Retro Projecteur",
             iconTv:iconTv,
             iconProjector:iconProjector,
-            office:office
+            office:office,
+            people:people
         }
     },
 
@@ -90,8 +95,9 @@ export default {
 }
 .container-equipements{
     display: flex;
-    width: 100px;
+    width: 200px;
     justify-content: space-around;
+
 }
 
 .container-imageSingleRoom{
@@ -100,5 +106,14 @@ export default {
 .image-office{
     width: 500px;
     height: 300px;
+}
+.iconPeople{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px; 
+}
+
+.iconPeople{
+    color:#ff00ae
 }
 </style>

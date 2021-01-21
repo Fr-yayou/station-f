@@ -2,7 +2,10 @@
   <div class="container-cardRoom">
       <h5>{{room.name}}</h5>
       <p>{{room.description}}</p>
-      <p>{{room.capacity}}</p>
+        <div class="iconPeople">
+          <img :src="people" alt="people"/>
+          <p>{{room.capacity}}</p>
+        </div>  
       <div class="container-equipements">
           <div class="room-equipements" v-if="room.equipements.length == 0">
               <p class="equipements-none">No equipement</p>
@@ -21,6 +24,7 @@
 </template>
 
 <script>
+import people from "../assets/people.png"
 import iconTv from "../assets/iconTv.png"
 import iconProjector from "../assets/iconProjector.png"
 export default {
@@ -32,7 +36,8 @@ export default {
             tv:"TV",
             retro:"Retro Projecteur",
             iconTv:iconTv,
-            iconProjector:iconProjector
+            iconProjector:iconProjector,
+            people:people
         }
     }
 }
@@ -54,9 +59,14 @@ export default {
     background-color: white;
     height: 200px;
     border: 1px solid white;
-    border-radius: 30px;
     box-shadow: 0 0 35px #D3D3D3
     
+}
+
+.container-cardRoom h5{
+    font-size:25px;
+    padding-bottom:15px;
+    margin-top: 10px;
 }
 
 .container-cardRoom:hover{
@@ -65,7 +75,7 @@ export default {
 
 .container-equipements{
     display: flex;
-    width: 100%;
+    width: 200px;
     justify-content: space-around;
     margin-top: 15px;
 }
@@ -87,6 +97,16 @@ export default {
 .btn-room:hover{
     background-color: #ff00ae;
     color:white;
+}
+
+.iconPeople{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px; 
+}
+
+.iconPeople{
+    color:#ff00ae
 }
 
 
