@@ -6,7 +6,7 @@ import axios from 'axios'
 
 
 //Set the default url for axios
-axios.defaults.baseURL = 'http://localhost:5000'
+axios.defaults.baseURL = 'http://localhost:5001'
 
 Vue.config.productionTip = false
 

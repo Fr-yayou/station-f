@@ -39,6 +39,7 @@
       </div>
       <input type="submit" value="submit">
     </form>
+    <button @click="displayNone()">click</button>
 
   </div>
 </template>
@@ -62,28 +63,37 @@ export default {
 
     methods:{
 
+
+      displayNone(){
+         //Get the the value of the ooptions html tag//
+        let select = document.getElementById("select-end")
+        for(let i = 0; i < select.length; i++){
+          if(select[i].value == 9){
+            select[i].style.display="none"
+          }
+        }
+        console.log("click")
+      },
+
       ...mapActions(["addBooking"]),
 
       submitBooking(){
         event.preventDefault()
-        //Get the the value of the ooptions html tag//
-
-        // let select = document.getElementById("select-end")
-        // for(let i = 0; i < select.length; i++){
-        //   console.log(select[i].value)
-        // }
         let newBooking={
           room_id:this.id,
           name:this.name,
           email:this.email,
           date:this.date,
           startTime: parseInt(this.startTime),
-          startEnd:parseInt(this.endTime)
+          endTime:parseInt(this.endTime)
         }
 
         this.addBooking(newBooking)
-        .then(res => console.log(res))
       }
+    },
+
+    created(){
+      
     }
 }
 </script>

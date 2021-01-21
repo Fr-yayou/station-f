@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+let fs = require('fs')
 
 //Import Booked model//
 const Booked = require("../models/Booked")
@@ -19,6 +20,14 @@ router.post("/post",async (req,res) =>{
             startTime,
             endTime
         })
+        //save into json file//
+        jsonData = JSON.stringify(newBooking)
+        fs.writeFile(`./json/booking-${name}.json`,jsonData,function(err){
+            if(err){
+                console.log(err)
+            }
+        })
+        //save into DB//
         const savedBooking = await newBooking.save()
         if (!savedBooking) throw Error("Something went wrong while saving the booking")
 
