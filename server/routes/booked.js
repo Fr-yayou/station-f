@@ -5,18 +5,16 @@ let fs = require('fs')
 //Import Booked model//
 const Booked = require("../models/Booked")
 
-//Post a new room//
-
+//Post a new Booking//
 router.post("/post",async (req,res) =>{
-    console.log(req.body)
-    const {room_id, email,name,day,startTime,endTime} = new Booked(req.body)
+    const {room_id, email,name,date,startTime,endTime} = new Booked(req.body)
 
     try{
         const newBooking = new Booked({
             room_id,
             email,
             name,
-            day,
+            date,
             startTime,
             endTime
         })
@@ -35,6 +33,15 @@ router.post("/post",async (req,res) =>{
     }catch(err){
         res.status(400).json({error:err})
     }
+})
+
+//Get all the booking//
+router.get("/" ,(req,res) =>{
+    Booked.find()
+    .then(bookings => res.json(bookings))
+    .catch(err => res.status(400).json({error:err}))
+
+
 })
 
 module.exports = router

@@ -3,7 +3,7 @@
     <form @submit="submitBooking">
       <input type="text" v-model="name">
       <input type="email" v-model="email"/>
-      <input type="date" v-model="date">
+      <input type="date" v-model="date" @change="filterTime">
       <div class="container-time">
         <div class="section-startTime">
           <p>Start</p>
@@ -39,12 +39,11 @@
       </div>
       <input type="submit" value="submit">
     </form>
-
   </div>
 </template>
 
 <script>
-import {mapActions} from "vuex"
+import {mapActions,mapGetters} from "vuex"
 export default {
     name:"Booking",
 
@@ -60,10 +59,33 @@ export default {
       }
     },
 
+    computed:{
+      ...mapGetters(["getAllBookings"])
+    },
+
     methods:{
 
+      filterTime(){
+        if(this.data != ""){
+          this.getAllBookings.booking.map(booking =>{
+            if(booking.date == this.date){
+              let startTime = booking.startTime
+              let endTime = booking.endTime
+              let select = document.getElementById("select-end")
+              for(let i = 0; i < select.length; i++){
+                let value = parseInt(select[i].value)
+                if(value >= startTime && value <= endTime){
+                    select[i].style.display="none"
+                }
+              }
 
-      ...mapActions(["addBooking"]),
+            }else{
+              console.log("non")
+            }
+          })
+        }
+      },
+      ...mapActions(["addBooking","allBookings"]),
 
       submitBooking(){
         event.preventDefault()
@@ -81,7 +103,7 @@ export default {
     },
 
     created(){
-      
+      this.allBookings()
     },
 
     mounted(){

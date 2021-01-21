@@ -9,7 +9,6 @@ const Room = require('../models/Room')
 
 
 //Post a new room//
-
 router.post("/post",async (req,res) => {
     // Destructure object newRoom
     const {name,description,capacity,equipements} = new Room(req.body)
