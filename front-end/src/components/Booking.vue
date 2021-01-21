@@ -65,17 +65,29 @@ export default {
 
     methods:{
 
+      //function to filter the time display//
       filterTime(){
         if(this.data != ""){
           this.getAllBookings.booking.map(booking =>{
             if(booking.date == this.date){
               let startTime = booking.startTime
               let endTime = booking.endTime
-              let select = document.getElementById("select-end")
-              for(let i = 0; i < select.length; i++){
-                let value = parseInt(select[i].value)
-                if(value >= startTime && value <= endTime){
-                    select[i].style.display="none"
+              //select the select to get the value fron the input//
+              let selectStart = document.getElementById("select-start")
+              for(let i = 0; i < selectStart.length; i++){
+                //change the value as integer//
+                let value = parseInt(selectStart[i].value)
+                if(value >= startTime && value < endTime){
+                    selectStart[i].style.display="none"
+                }
+              }
+
+              let selectEnd = document.getElementById("select-end")
+              for(let i = 0; i < selectEnd.length; i++){
+                //change the value as integer//
+                let value = parseInt(selectEnd[i].value)
+                if(value > startTime && value <= endTime){
+                    selectEnd[i].style.display="none"
                 }
               }
 
@@ -85,6 +97,8 @@ export default {
           })
         }
       },
+
+
       ...mapActions(["addBooking","allBookings"]),
 
       submitBooking(){
