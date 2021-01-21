@@ -6,7 +6,17 @@
                 <img class="input-searchIcon" :src="searchIcon" alt="search-icon"/>
                 <input class="searchInput" type="text" :keyup="searchRoom"  v-model="search"/>
             </div>
-            <div class="more-filter"></div>
+            <div class="more-filter">   
+                <select id="equipement" v-model="equipement">
+                    <option value="TV">Tv</option>
+                    <option value="Retro Projecteur">Retro Projecteur</option>
+                </select>
+                <select id="capacity" v-model="capacity">
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="10">+10</option>
+                </select>
+            </div>
         </div>
       <div class="container-room">
           <div v-for="room in searchRoom" :key="room._id">
@@ -27,7 +37,9 @@ export default {
     data(){
         return{
             search:"",
-            searchIcon:searchIcon
+            searchIcon:searchIcon,
+            capacity:"",
+            equipement:""
         }},
     
 
@@ -46,8 +58,6 @@ export default {
                 return lowerCase.match(search)
             })
         }
-
-
     },
 
     methods:{
