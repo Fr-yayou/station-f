@@ -1,9 +1,9 @@
 <template>
   <div class="container-booking">
-    <form @submit="submitBooking">
-      <input type="text" v-model="name">
-      <input type="email" v-model="email"/>
-      <input type="date" v-model="date" @change="filterTime">
+    <form class="booking-form" @submit="submitBooking">
+      <input class="input-booking" type="text" placeholder="Name" v-model="name">
+      <input class="input-booking" placeholder="Email" type="email" v-model="email"/>
+      <input type="date" class="input-booking" v-model="date" @change="filterTime">
       <div class="container-time">
         <div class="section-startTime">
           <p>Start</p>
@@ -14,6 +14,7 @@
             <option value="11">11:00</option>
             <option value="12">12:00</option>
             <option value="13">13:00</option>
+            <option value="14">14:00</option>
             <option value="15">15:00</option>
             <option value="16">16:00</option>
             <option value="17">17:00</option>
@@ -29,15 +30,19 @@
           <option value="11">11:00</option>
           <option value="12">12:00</option>
           <option value="13">13:00</option>
+          <option value="14">14:00</option>
           <option value="15">15:00</option>
           <option value="16">16:00</option>
+          <option value="17">17:00</option>
           <option value="18">18:00</option>
           <option value="19">19:00</option>
           <option value="20">20:00</option>
         </select>
       </div>
       </div>
-      <input type="submit" value="submit">
+      <div class="container-btnSubmit">
+         <input class="btnSubmit" type="submit" value="Book your room">
+      </div>
     </form>
   </div>
 </template>
@@ -64,7 +69,6 @@ export default {
     },
 
     methods:{
-
       //function to filter the time display//
       filterTime(){
         if(this.data != ""){
@@ -91,8 +95,6 @@ export default {
                 }
               }
 
-            }else{
-              console.log("non")
             }
           })
         }
@@ -113,23 +115,17 @@ export default {
         }
 
         this.addBooking(newBooking)
+        this.name=""
+        this.email=""
+        this.date=""
+        this.startTime=""
+        this.endTime=""
       }
     },
 
     created(){
       this.allBookings()
     },
-
-    mounted(){
-        //Get the the value of the ooptions html tag//
-        //display none the hour before the component mount//
-      // let select = document.getElementById("select-end")
-      //   for(let i = 0; i < select.length; i++){
-      //     if(select[i].value < 12){
-      //       select[i].style.display="none"
-      //     }
-      //   }
-    }
 }
 </script>
 
@@ -137,9 +133,86 @@ export default {
 .container-booking{
   display: flex;
   flex-direction: column;
+  margin-top:25px;
+  width: 500px;
 }
 
 .container-time{
   display: flex;
 }
+
+.booking-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.input-booking{
+    height: 30px;
+    margin-bottom: 15px;
+    border: 1px solid white;
+    text-indent: 10px;
+}
+
+.input-booking:focus{
+  outline: 1px solid #ff00ae; ;
+}
+
+::placeholder{
+  color:#ff00ae;
+}
+
+.section-startTime{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#select-start{
+  width:200px;
+  height:30px;
+   border:1px solid white
+}
+
+.section-endTime{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#select-end{
+  width: 200px;
+  height: 30px;
+  border:1px solid white
+}
+#select-end:focus{
+  outline:1px solid #ff00ae;
+}
+#select-start:focus{
+  outline:1px solid #ff00ae;
+}
+
+.container-time{
+  display: flex;
+  justify-content: space-around;
+}
+
+.container-btnSubmit{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.btnSubmit{
+  width: 200px;
+  height: 35px;
+  color:#ff00ae;
+  background-color: white;
+  border:1px solid #ff00ae;
+  cursor: pointer;
+}
+.btnSubmit:hover{
+  background-color:#ff00ae ;
+  color: white;
+}
+
 </style>

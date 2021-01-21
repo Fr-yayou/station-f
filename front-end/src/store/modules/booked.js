@@ -6,13 +6,12 @@ const state = {
 
 
 const getters={
-    getAllBookings:(state) => state
+    getAllBookings:(state) => state,
 }
 
 const actions={
     async addBooking({commit},newBooking){
         const response = await axios.post("/booking/post",newBooking)
-        console.log(response,"response")
         commit("ADD_BOOKING",response.data)
     },
 
@@ -23,7 +22,7 @@ const actions={
 }
 
 const mutations={
-    ADD_BOOKING:(state,newBooking) => state.booking .push(newBooking),
+    ADD_BOOKING:(state,booking) => state.booking.push(booking.data),
     SET_BOOKING:(state,booking) => (state.booking = booking)
 }
 

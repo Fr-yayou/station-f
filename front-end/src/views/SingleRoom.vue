@@ -1,17 +1,19 @@
 <template>
   <div class="container-singleViewRoom">
       <div v-for="detail in getRoom" :key="detail._id">
-          <h5>{{detail.name}}</h5>
-          <p>{{detail.description}}</p>
-          <p>{{detail.capacity}}</p>
-          <div class="container-equipements">
-              <div class="room-equipements" v-if="detail.equipements.length == 0">
-              <p class="equipements-none">No equipement</p>
+          <div class="room-details">
+                <h5>{{detail.name}}</h5>
+                <p>{{detail.description}}</p>   
+                <p>{{detail.capacity}}</p>
+            <div class="container-equipements">
+                <div class="room-equipements" v-if="detail.equipements.length == 0">
+                <p class="equipements-none">No equipement</p>
           </div>
           <div class="room-equipements" v-else v-for="gear in detail.equipements" :key="gear._id">
               <img v-if="gear.name == tv" :src="iconTv" alt="tv"/> 
               <img  v-else-if="gear.name == retro" :src="iconProjector" alt="tv"/> 
           </div>
+        </div>
         </div>
         <Booking v-bind:id="detail._id"/>
       </div>
@@ -67,5 +69,23 @@ export default {
     display: flex;
     justify-content: center;
     margin-top: 80px;
+}
+
+.room-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+
+}
+
+.room-details h5{
+    font-size:25px;
+    margin-top: 10px;
+}
+.container-equipements{
+    display: flex;
+    width: 100px;
+    justify-content: space-around;
 }
 </style>
