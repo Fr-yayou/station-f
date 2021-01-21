@@ -39,7 +39,6 @@
       </div>
       <input type="submit" value="submit">
     </form>
-    <button @click="displayNone()">click</button>
 
   </div>
 </template>
@@ -64,17 +63,6 @@ export default {
     methods:{
 
 
-      displayNone(){
-         //Get the the value of the ooptions html tag//
-        let select = document.getElementById("select-end")
-        for(let i = 0; i < select.length; i++){
-          if(select[i].value == 9){
-            select[i].style.display="none"
-          }
-        }
-        console.log("click")
-      },
-
       ...mapActions(["addBooking"]),
 
       submitBooking(){
@@ -94,6 +82,17 @@ export default {
 
     created(){
       
+    },
+
+    mounted(){
+        //Get the the value of the ooptions html tag//
+        //display none the hour before the component mount//
+      // let select = document.getElementById("select-end")
+      //   for(let i = 0; i < select.length; i++){
+      //     if(select[i].value < 12){
+      //       select[i].style.display="none"
+      //     }
+      //   }
     }
 }
 </script>
