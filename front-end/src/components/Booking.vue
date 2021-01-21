@@ -135,6 +135,7 @@ export default {
   flex-direction: column;
   margin-top:25px;
   width: 500px;
+  padding-bottom: 70px;
 }
 
 .container-time{

@@ -18,6 +18,7 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.6;
+    padding-top:80px
 }
 .container-banner h1{
     color:white;

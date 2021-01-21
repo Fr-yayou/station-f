@@ -2,6 +2,9 @@
   <div class="container-singleViewRoom">
       <div v-for="detail in getRoom" :key="detail._id">
           <div class="room-details">
+                <div class="container-imageSingleRoom">
+                    <img class="image-office" :src="office" alt="office" />
+                </div>
                 <h5>{{detail.name}}</h5>
                 <p>{{detail.description}}</p>   
                 <p>{{detail.capacity}}</p>
@@ -22,6 +25,7 @@
 </template>
 
 <script>
+import office from "../assets/office.jpg"
 import {mapGetters,mapActions} from "vuex"
 import iconTv from "../assets/iconTv.png"
 import iconProjector from "../assets/iconProjector.png"
@@ -34,7 +38,8 @@ export default {
             tv:"TV",
             retro:"Retro Projecteur",
             iconTv:iconTv,
-            iconProjector:iconProjector
+            iconProjector:iconProjector,
+            office:office
         }
     },
 
@@ -68,7 +73,7 @@ export default {
     margin-left:25px;
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    padding-top:100px
 }
 
 .room-details{
@@ -87,5 +92,13 @@ export default {
     display: flex;
     width: 100px;
     justify-content: space-around;
+}
+
+.container-imageSingleRoom{
+    width: 100%;
+}
+.image-office{
+    width: 500px;
+    height: 300px;
 }
 </style>
