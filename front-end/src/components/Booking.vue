@@ -2,7 +2,7 @@
   <div class="container-booking">
     <div class="container-successMessage" v-if="success">
       <transition name="bounce">
-         <img v-if="success" :src="imageSuccess" alt="success">
+         <img v-if="success != null" :src="imageSuccess" alt="success">
       </transition>
       <h3 class="success">Your room has been booked</h3>
     </div>
