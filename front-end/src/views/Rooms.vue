@@ -106,6 +106,10 @@ export default {
 </script>
 
 <style scoped>
+
+.rooms-view{
+    padding-bottom:60px
+}
 .container-room{
     display:flex;
     flex-wrap: wrap;
@@ -134,6 +138,25 @@ export default {
     position: absolute;
     margin-left: 10px;
     margin-top: 12px;
+}
+
+#equipement{
+    width:150px;
+    height:41px;
+    border:1px solid white;
+    margin-left: 5px;
+}
+#capacity{
+    width:150px;
+    height:41px;
+    border:1px solid white;
+    margin-left: 5px;
+}
+#capacity:focus{
+    outline: 2px solid #ff00ae;
+}
+#equipement:focus{
+    outline: 2px solid #ff00ae;
 }
 
 

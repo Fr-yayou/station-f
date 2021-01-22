@@ -5,7 +5,7 @@
         </div>
         <div class="container-navLink">
             <ul>
-                <li class="link"><router-link to="/rooms">Home</router-link></li>
+                <li class="link"><router-link to="/">Home</router-link></li>
             </ul>
         </div>
     </div>
