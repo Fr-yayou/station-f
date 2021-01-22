@@ -7,22 +7,34 @@
                 <input class="searchInput" type="text" :keyup="searchRoom"  v-model="search"/>
             </div>
             <div class="more-filter">   
-                <select id="equipement" v-model="equipement">
+                <select id="equipement"  v-on:change="filterEquipement()" v-model="equipement">
+                     <option value="">Equipement</option>
                     <option value="TV">Tv</option>
                     <option value="Retro Projecteur">Retro Projecteur</option>
                 </select>
-                <select id="capacity" v-model="capacity">
-                    <option value="2">2</option>
+                <select id="capacity"  v-on:change="filterCapacity($event)" v-model="capacity">
+                    <option value="">Capacity</option>
                     <option value="5">5</option>
-                    <option value="10">+10</option>
+                    <option value="10">10</option>
+                    <option value="26">26</option>
                 </select>
             </div>
         </div>
-      <div class="container-room">
+      <div v-if="capacity.length == 0 && roomsEquipement.length == 0" class="container-room">
           <div v-for="room in searchRoom" :key="room._id">
             <Room v-bind:room="room"/>
           </div>
       </div>
+      <div v-else-if="roomsEquipement.length !== 0" class="container-room">
+          <div v-for="room in roomsEquipement" :key="room._id">
+            <Room v-bind:room="room"/>
+          </div>
+        </div>
+        <div v-else class="container-room">
+          <div v-for="room in roomsCapacity" :key="room._id">
+            <Room v-bind:room="room"/>
+          </div>
+        </div>
   </div>
 </template>
 
@@ -39,7 +51,9 @@ export default {
             search:"",
             searchIcon:searchIcon,
             capacity:"",
-            equipement:""
+            equipement:"",
+            roomsEquipement:[],
+            roomsCapacity:[]
         }},
     
 
@@ -57,12 +71,32 @@ export default {
                 let search = this.search.toLowerCase()
                 return lowerCase.match(search)
             })
-        }
+        },
+        
     },
 
     methods:{
         ...mapActions(["allRooms"]),
+                filterEquipement(){
+                    this.roomsEquipement=[]
+                    this.getAllRooms.rooms.map(room =>{
+                        room.equipements.filter(device =>{
+                        if(device.name == this.equipement){
+                          this.roomsEquipement.push(room)
+                   }
+                })
+            })
+        },
 
+        filterCapacity(){
+            this.roomsCapacity=[]
+            this.getAllRooms.rooms.filter(room =>{
+                if(room.capacity == this.capacity){
+                     this.roomsCapacity.push(room)
+                }
+            })
+        }
+    
     },
 
     created(){
