@@ -1,6 +1,12 @@
 <template>
   <div class="container-booking">
-    <form class="booking-form" @submit="submitBooking">
+    <div class="container-successMessage" v-if="success">
+      <transition name="bounce">
+         <img v-if="success" :src="imageSuccess" alt="success">
+      </transition>
+      <h3 class="success">Your room has been booked</h3>
+    </div>
+    <form v-else class="booking-form" @submit="submitBooking">
       <input class="input-booking" type="text" placeholder="Name" v-model="name">
       <input class="input-booking" placeholder="Email" type="email" v-model="email"/>
       <input type="date" class="input-booking" v-model="date" @change="filterTime">
@@ -49,6 +55,7 @@
 
 <script>
 import {mapActions,mapGetters} from "vuex"
+import Success from "../assets/check.png"
 export default {
     name:"Booking",
 
@@ -60,7 +67,9 @@ export default {
         email:"",
         date:"",
         endTime:"",
-        startTime:""
+        startTime:"",
+        success:null,
+        imageSuccess:Success
       }
     },
 
@@ -115,6 +124,9 @@ export default {
         }
 
         this.addBooking(newBooking)
+        .then(res =>{
+          this.success = res.message
+        })
         this.name=""
         this.email=""
         this.date=""
@@ -130,6 +142,31 @@ export default {
 </script>
 
 <style scoped>
+
+.container-successMessage{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bounce-enter-active{
+  animation: bounce-in .5s;
+}
+.success{
+  margin-left: 20px;
+}
+
+@keyframes bounce-in {
+  0%{
+    transform: scale(0);
+  }
+  50%{
+    transform: scale(1.5);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
 .container-booking{
   display: flex;
   flex-direction: column;

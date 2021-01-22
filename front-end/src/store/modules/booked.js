@@ -13,6 +13,7 @@ const actions={
     async addBooking({commit},newBooking){
         const response = await axios.post("/booking/post",newBooking)
         commit("ADD_BOOKING",response.data)
+        return response.data
     },
 
     async allBookings({commit}){
